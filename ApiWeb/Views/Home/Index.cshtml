@@ -1,24 +1,54 @@
-﻿<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+﻿@model  List<Data.Taller.AUTO>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+<div class="card">
+    <div class="card-header">
+        <h5>Lista de Autos</h5>
+    </div>
+    <div class="card-body">
+        @Html.ActionLink("Dar de Alta Auto", "Auto_detalle", new { id = 0 }, new { @class = "btn btn-success btn-sm" })
+
+        <hr />
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Patente</th>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Año</th>
+                    <th>Color</th>
+                    <th>Tecnico</th>
+                    <th>Tarea</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.patente</td>
+                        <td>@item.marca</td>
+                        <td>@item.modelo</td>
+                        <td>@item.año</td>
+                        <td>@item.color</td>
+                        <td>@item.TECNICO.apellido</td>
+                        <td>@item.ESTADO.descripcion</td>
+                        <td>
+
+                            @Html.ActionLink("Editar", "Auto_Detalle", new { id = item.id }, new { @class = "btn btn-primary btn-sm" })
+                            @Html.ActionLink("Eliminar", "Eliminar", new { id = item.id }, new { @class = "btn btn-danger btn-sm" })
+
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>ASP.NET Web API is a framework that makes it easy to build HTTP services that reach
-        a broad range of clients, including browsers and mobile devices. ASP.NET Web API
-        is an ideal platform for building RESTful applications on the .NET Framework.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301870">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301871">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301872">Learn more &raquo;</a></p>
-    </div>
-</div>
+

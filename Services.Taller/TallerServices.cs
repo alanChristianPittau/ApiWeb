@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Data.Taller;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,11 @@ namespace Services.Taller
 {
     public class TallerServices
     {
+        public List<AUTO> obtenerAutos()
+        {
+            TallerDataServices tallerDataService = new TallerDataServices();
+
+            return tallerDataService.obtenerAutos();
+        }
     }
 }

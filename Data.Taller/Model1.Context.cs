@@ -25,8 +25,8 @@ namespace Data.Taller
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<AUTO> AUTO { get; set; }
-        public virtual DbSet<ESTADO> ESTADO { get; set; }
-        public virtual DbSet<TECNICO> TECNICO { get; set; }
+        public virtual DbSet<AUTO> Auto { get; set; }
+        public virtual DbSet<ESTADO> Estado { get; set; }
+        public virtual DbSet<TECNICO> Tecnico { get; set; }
     }
 }
