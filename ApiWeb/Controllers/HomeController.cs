@@ -7,11 +7,21 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace ApiWeb.Controllers
-{ 
-       public class HomeController : Controller
-    {
+{   
     
- 
+    /// <summary>
+     /// Obtenemos el path del archivo XML de documentacion
+     /// </summary>
+     /// <returns></returns>
+    public class HomeController : Controller
+    {
+
+        /// <summary>
+        /// Obtenemos el path del archivo XML de documentacion
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+
         public ActionResult Index()
         {
             TallerServices tallerServices = new TallerServices();
