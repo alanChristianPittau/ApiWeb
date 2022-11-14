@@ -21,5 +21,17 @@ namespace Services.Taller
 
             return tallerDataService.Auto_Detalle(id);
         }
+        public void EliminarAuto(int id)
+        {
+            TallerDataServices tallerDataService = new TallerDataServices();
+
+            tallerDataService.EliminarAuto(id);
+        }
+        public AutoDto Alta_Auto(AutoDto oAutoVM)
+        {
+            TallerDataServices tallerDataService = new TallerDataServices();
+
+            return tallerDataService.Alta_Auto(oAutoVM);
+        }
     }
 }
