@@ -53,7 +53,6 @@
     <Compile Include="AUTO.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Class1.cs" />
     <Compile Include="ESTADO.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

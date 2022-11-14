@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Data.Taller
+namespace Services.Taller
 {
-    public class Class1
+    public class TallerServices
     {
     }
 }
