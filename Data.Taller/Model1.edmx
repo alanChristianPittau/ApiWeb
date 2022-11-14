@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="tallerMecanicoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AUTO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="marca" Type="nchar" MaxLength="15" />
+          <Property Name="modelo" Type="nchar" MaxLength="15" />
+          <Property Name="patente" Type="nchar" MaxLength="15" />
+          <Property Name="año" Type="int" />
+          <Property Name="color" Type="nchar" MaxLength="15" />
+          <Property Name="nChasis" Type="nchar" MaxLength="25" />
+          <Property Name="titularNombre" Type="nchar" MaxLength="25" />
+          <Property Name="titularApellido" Type="nchar" MaxLength="50" />
+          <Property Name="celular" Type="nchar" MaxLength="15" />
+          <Property Name="km" Type="int" />
+          <Property Name="problema" Type="nchar" MaxLength="500" />
+          <Property Name="solucion" Type="nchar" MaxLength="500" />
+          <Property Name="idTecnico" Type="int" />
+          <Property Name="idEstado" Type="int" />
+        </EntityType>
+        <EntityType Name="ESTADO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="nchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="TECNICO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nchar" MaxLength="20" />
+          <Property Name="apellido" Type="nchar" MaxLength="20" />
+          <Property Name="rol" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK_IDESTADO">
+          <End Role="ESTADO" Type="Self.ESTADO" Multiplicity="0..1" />
+          <End Role="AUTO" Type="Self.AUTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADO">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="AUTO">
+              <PropertyRef Name="idEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IDTECNICO">
+          <End Role="TECNICO" Type="Self.TECNICO" Multiplicity="0..1" />
+          <End Role="AUTO" Type="Self.AUTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TECNICO">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="AUTO">
+              <PropertyRef Name="idTecnico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="tallerMecanicoModelStoreContainer">
+          <EntitySet Name="AUTO" EntityType="Self.AUTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ESTADO" EntityType="Self.ESTADO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TECNICO" EntityType="Self.TECNICO" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_IDESTADO" Association="Self.FK_IDESTADO">
+            <End Role="ESTADO" EntitySet="ESTADO" />
+            <End Role="AUTO" EntitySet="AUTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IDTECNICO" Association="Self.FK_IDTECNICO">
+            <End Role="TECNICO" EntitySet="TECNICO" />
+            <End Role="AUTO" EntitySet="AUTO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="tallerMecanicoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AUTO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="marca" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="modelo" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="patente" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="año" Type="Int32" />
+          <Property Name="color" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="nChasis" Type="String" MaxLength="25" FixedLength="true" Unicode="true" />
+          <Property Name="titularNombre" Type="String" MaxLength="25" FixedLength="true" Unicode="true" />
+          <Property Name="titularApellido" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="celular" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="km" Type="Int32" />
+          <Property Name="problema" Type="String" MaxLength="500" FixedLength="true" Unicode="true" />
+          <Property Name="solucion" Type="String" MaxLength="500" FixedLength="true" Unicode="true" />
+          <Property Name="idTecnico" Type="Int32" />
+          <Property Name="idEstado" Type="Int32" />
+          <NavigationProperty Name="ESTADO" Relationship="Self.FK_IDESTADO" FromRole="AUTO" ToRole="ESTADO" />
+          <NavigationProperty Name="TECNICO" Relationship="Self.FK_IDTECNICO" FromRole="AUTO" ToRole="TECNICO" />
+        </EntityType>
+        <EntityType Name="ESTADO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="AUTO" Relationship="Self.FK_IDESTADO" FromRole="ESTADO" ToRole="AUTO" />
+        </EntityType>
+        <EntityType Name="TECNICO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="apellido" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="rol" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="AUTO" Relationship="Self.FK_IDTECNICO" FromRole="TECNICO" ToRole="AUTO" />
+        </EntityType>
+        <Association Name="FK_IDESTADO">
+          <End Role="ESTADO" Type="Self.ESTADO" Multiplicity="0..1" />
+          <End Role="AUTO" Type="Self.AUTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADO">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="AUTO">
+              <PropertyRef Name="idEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IDTECNICO">
+          <End Role="TECNICO" Type="Self.TECNICO" Multiplicity="0..1" />
+          <End Role="AUTO" Type="Self.AUTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TECNICO">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="AUTO">
+              <PropertyRef Name="idTecnico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="tallerMecanicoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AUTO" EntityType="Self.AUTO" />
+          <EntitySet Name="ESTADO" EntityType="Self.ESTADO" />
+          <EntitySet Name="TECNICO" EntityType="Self.TECNICO" />
+          <AssociationSet Name="FK_IDESTADO" Association="Self.FK_IDESTADO">
+            <End Role="ESTADO" EntitySet="ESTADO" />
+            <End Role="AUTO" EntitySet="AUTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IDTECNICO" Association="Self.FK_IDTECNICO">
+            <End Role="TECNICO" EntitySet="TECNICO" />
+            <End Role="AUTO" EntitySet="AUTO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="tallerMecanicoModelStoreContainer" CdmEntityContainer="tallerMecanicoEntities">
+          <EntitySetMapping Name="AUTO">
+            <EntityTypeMapping TypeName="tallerMecanicoModel.AUTO">
+              <MappingFragment StoreEntitySet="AUTO">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="marca" ColumnName="marca" />
+                <ScalarProperty Name="modelo" ColumnName="modelo" />
+                <ScalarProperty Name="patente" ColumnName="patente" />
+                <ScalarProperty Name="año" ColumnName="año" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="nChasis" ColumnName="nChasis" />
+                <ScalarProperty Name="titularNombre" ColumnName="titularNombre" />
+                <ScalarProperty Name="titularApellido" ColumnName="titularApellido" />
+                <ScalarProperty Name="celular" ColumnName="celular" />
+                <ScalarProperty Name="km" ColumnName="km" />
+                <ScalarProperty Name="problema" ColumnName="problema" />
+                <ScalarProperty Name="solucion" ColumnName="solucion" />
+                <ScalarProperty Name="idTecnico" ColumnName="idTecnico" />
+                <ScalarProperty Name="idEstado" ColumnName="idEstado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ESTADO">
+            <EntityTypeMapping TypeName="tallerMecanicoModel.ESTADO">
+              <MappingFragment StoreEntitySet="ESTADO">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TECNICO">
+            <EntityTypeMapping TypeName="tallerMecanicoModel.TECNICO">
+              <MappingFragment StoreEntitySet="TECNICO">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="rol" ColumnName="rol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
