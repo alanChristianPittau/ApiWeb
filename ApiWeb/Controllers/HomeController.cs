@@ -29,5 +29,15 @@ namespace ApiWeb.Controllers
             List<AUTO> auto = tallerServices.obtenerAutos();
             return View(auto);
         }
+        [HttpGet]
+        public ActionResult Auto_Detalle(int id)
+        {
+            AutoDto oAutoVM = new AutoDto();
+
+            TallerServices tallerServices = new TallerServices();
+            oAutoVM = tallerServices.Auto_Detalle(id);
+            return View(oAutoVM);
+
+        }
     }
 }

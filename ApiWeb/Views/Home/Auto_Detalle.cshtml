@@ -1,0 +1,140 @@
+﻿@model  Data.Taller.AutoDto
+@{
+    ViewData["Title"] = "Auto_Detalle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model.oAuto.id == 0)
+{
+    <h1>Crear ingreso del Vehículo</h1>
+}
+else
+{
+    <h1> Detalles del Vehículo</h1>
+}
+<br>
+<br>
+<div class="form-group">
+    <form asp-action="Auto_Detalle" asp-asp-controller="Home" method="post">
+        <input type="hidden" asp-for="Model.oAuto.id" />
+        <div class="col-md-12">
+            @Html.LabelFor(model => Model.oAuto.patente, new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => Model.oAuto.patente, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => Model.oAuto.patente, "", new { @class = "text-danger" })
+        </div>
+        <br>
+        <br>
+        <div class="col-md-12">
+            @Html.LabelFor(model => Model.oAuto.marca, new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => Model.oAuto.marca, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => Model.oAuto.marca, "", new { @class = "text-danger" })
+        </div>
+        <br>
+        <br>
+        <div class="col-md-12">
+            @Html.LabelFor(model => Model.oAuto.modelo, new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => Model.oAuto.modelo, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => Model.oAuto.modelo, "", new { @class = "text-danger" })
+        </div>
+        <br>
+        <br>
+        <div class="col-md-12">
+            @Html.LabelFor(model => Model.oAuto.nChasis, new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => Model.oAuto.nChasis, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => Model.oAuto.nChasis, "", new { @class = "text-danger" })
+        </div>
+        <br>
+        <br>
+        <div class="col-md-12">
+            @Html.LabelFor(model => Model.oAuto.año, new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => Model.oAuto.año, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => Model.oAuto.año, "", new { @class = "text-danger" })
+        </div>
+        <br>
+        <br>
+        <div class="col-md-12">
+            @Html.LabelFor(model => Model.oAuto.color, new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => Model.oAuto.color, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => Model.oAuto.color, "", new { @class = "text-danger" })
+        </div>
+        <br>
+        <br>
+
+        <h1> Datos del Cliente</h1>
+        <br>
+        <br>
+        <div class="col-md-12">
+            @Html.LabelFor(model => Model.oAuto.titularApellido, new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => Model.oAuto.titularApellido, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => Model.oAuto.titularApellido, "", new { @class = "text-danger" })
+        </div>
+        <br>
+        <br>
+        <div class="col-md-12">
+            @Html.LabelFor(model => Model.oAuto.titularNombre, new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => Model.oAuto.titularNombre, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => Model.oAuto.titularNombre, "", new { @class = "text-danger" })
+        </div>
+        <br>
+        <br>
+        <div class="col-md-12">
+            @Html.LabelFor(model => Model.oAuto.celular, new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => Model.oAuto.celular, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => Model.oAuto.celular, "", new { @class = "text-danger" })
+        </div>
+        <br>
+        <br>
+        <div class="col-md-12">
+            @Html.LabelFor(model => Model.oAuto.km, new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => Model.oAuto.km, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => Model.oAuto.km, "", new { @class = "text-danger" })
+        </div>
+        <br>
+        <br>
+        <div class="col-md-12">
+            @Html.LabelFor(model => Model.oAuto.problema, new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => Model.oAuto.problema, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => Model.oAuto.problema, "", new { @class = "text-danger" })
+        </div>
+        <br>
+        <br>
+        <div class="col-md-12">
+            @Html.LabelFor(model => Model.oAuto.solucion, new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => Model.oAuto.solucion, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => Model.oAuto.solucion, "", new { @class = "text-danger" })
+        </div>
+        <br>
+        <br>
+
+        <div class="col-md-12">
+            @Html.LabelFor(model => Model.oAuto.idTecnico, new { @class = "control-label col-md-2" })
+            @Html.DropDownListFor(M => Model.oAuto.idTecnico,
+                     new SelectList(Model.oListaTecnico, "Value", "Text"),
+              "Seleccionar", new { Class = "form-control" })
+        </div>
+        <br>
+        <br>
+        <div class="col-md-12">
+            @Html.LabelFor(model => Model.oAuto.idEstado, new { @class = "control-label col-md-2" })
+            @Html.DropDownListFor(M => Model.oAuto.idEstado,
+                     new SelectList(Model.oListaEstado, "Value", "Text"),
+              "Seleccionar", new { Class = "form-control" })
+        </div>
+
+        <div class="mb-2">
+            @if (Model.oAuto.id == 0)
+            {
+                <button class="btn btn-primary btn-sm w25" type="submit">Crear</button>
+            }
+            else
+            {
+                <button class="btn btn-primary btn-sm w25" type="submit">Actualizar</button>
+            }
+            @Html.ActionLink("Volver", "Index", new { @class = "btn btn-danger btn-sm" })
+
+        </div>
+
+    </form>
+</div>
+
+
