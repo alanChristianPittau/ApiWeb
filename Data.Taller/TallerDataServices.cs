@@ -51,5 +51,37 @@ namespace Data.Taller
 
             }
         }
+        public AutoDto Alta_Auto(AutoDto oAutoVM)
+        {
+
+            using (tallerMecanicoEntities db = new tallerMecanicoEntities())
+
+            {
+                if (oAutoVM.oAuto.id == 0)
+                {
+                    db.Auto.Add(oAutoVM.oAuto);
+                }
+                else
+                {
+                    //db.AUTO.Update(oAutoVM.oAuto);
+                }
+                db.SaveChanges();
+                return oAutoVM;
+
+            }
+        }
+        public void EliminarAuto(int id)
+        {
+            using (tallerMecanicoEntities db = new tallerMecanicoEntities())
+
+            {
+                var oAuto = db.Auto.FirstOrDefault(x => x.id == id);
+
+                db.Auto.Remove(oAuto);
+                db.SaveChanges();
+
+            }
+
+        }
     }
 }

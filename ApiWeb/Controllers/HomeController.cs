@@ -15,7 +15,7 @@ namespace ApiWeb.Controllers
      /// <returns></returns>
     public class HomeController : Controller
     {
-
+        ///uuuuuuu
         /// <summary>
         /// Obtenemos el path del archivo XML de documentacion
         /// </summary>
@@ -37,6 +37,30 @@ namespace ApiWeb.Controllers
             TallerServices tallerServices = new TallerServices();
             oAutoVM = tallerServices.Auto_Detalle(id);
             return View(oAutoVM);
+
+        }
+
+        /// <summary>
+        /// Elimina un registro de Auto
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        public ActionResult Eliminar(int Id)
+        {
+            AutoDto oAutoVM = new AutoDto();
+
+            TallerServices tallerServices = new TallerServices();
+            tallerServices.EliminarAuto(Id);
+            return RedirectToAction("Index", "Home");
+        }
+        [HttpPost]
+        public ActionResult Alta_Auto(AutoDto oAutoVM)
+        {
+
+            TallerServices tallerServices = new TallerServices();
+
+            oAutoVM = tallerServices.Alta_Auto(oAutoVM);
+            return RedirectToAction("Index", "Home");
 
         }
     }
